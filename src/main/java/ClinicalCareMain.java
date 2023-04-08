@@ -1,4 +1,6 @@
 
+import com.github.javafaker.Faker;
+
 import PatientManagement.Persona.Person;
 import PatientManagement.Persona.PersonDirectory;
 
