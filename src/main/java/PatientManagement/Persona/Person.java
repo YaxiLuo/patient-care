@@ -20,10 +20,12 @@ public class Person {
     Person father;
     ArrayList<Person> siblings;
     Patient patient;
+    int age;
 
-    public Person(String id) {
+    public Person(String id, int a) {
         this.id = id;
         siblings = new ArrayList<Person>();
+        age = a;
     }
 
     public String getPersonId() {
@@ -48,5 +50,9 @@ public class Person {
         if (getPersonId().equals(id))
             return true;
         return false;
+    }
+
+    public int getAge() {
+        return age;
     }
 }

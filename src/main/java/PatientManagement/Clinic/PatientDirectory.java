@@ -5,6 +5,7 @@
  */
 package PatientManagement.Clinic;
 
+import PatientManagement.Catalogs.VitalSignsCatalog;
 import PatientManagement.Patient.Patient;
 import java.util.ArrayList;
 
@@ -13,10 +14,11 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class PatientDirectory {
-
+    Clinic clinic;
     ArrayList<Patient> patients;
 
-    PatientDirectory() {
+    PatientDirectory(Clinic clinic) {
+        this.clinic = clinic;
         patients = new ArrayList<Patient>();
     }
 
@@ -40,6 +42,6 @@ public class PatientDirectory {
             }
         }
         return temp; // has the list of encounters with confirmed diagnosis
-
     }
+
 }

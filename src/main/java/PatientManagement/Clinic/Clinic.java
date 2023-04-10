@@ -6,6 +6,7 @@
 package PatientManagement.Clinic;
 
 import PatientManagement.Catalogs.DrugCatalog;
+import PatientManagement.Catalogs.VitalSignsCatalog;
 import PatientManagement.Persona.PersonDirectory;
 
 /**
@@ -19,14 +20,15 @@ public class Clinic {
     LocationList locationlist;
     DrugCatalog drugcatalog;
     EventSchedule eventschedule;
+    VitalSignsCatalog vitalSignsCatalog;
     String name; // name of the clinic
 
     public Clinic(String n) {
         eventschedule = new EventSchedule();
         sitelist = new SiteCatalog();
         persondirectory = new PersonDirectory();
-        patientdirectory = new PatientDirectory();
-
+        patientdirectory = new PatientDirectory(this);
+        vitalSignsCatalog = new VitalSignsCatalog();
         name = n;
     }
 
@@ -42,6 +44,10 @@ public class Clinic {
 
         Site s = sitelist.newSite(location);
         return s;
+    }
+
+    public VitalSignsCatalog getVitalSignsCatalog() {
+        return vitalSignsCatalog;
     }
 
 }

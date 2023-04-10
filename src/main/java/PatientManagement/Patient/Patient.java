@@ -5,6 +5,10 @@
  */
 package PatientManagement.Patient;
 
+import PatientManagement.Catalogs.Limits;
+import PatientManagement.Catalogs.VitalSignsCatalog;
+import PatientManagement.Clinic.Clinic;
+import PatientManagement.Clinic.PatientDirectory;
 import PatientManagement.Patient.ClinicalHistory.AlergyHistory;
 import PatientManagement.Patient.ClinicalHistory.VaccinationHistory;
 import PatientManagement.Patient.Encounters.Diagnosis;
@@ -18,15 +22,16 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class Patient {
-
+    Clinic clinic;
     EncounterHistory encounterhistory;
     VaccinationHistory vachistory;
     Person person;
     AlergyHistory alergyhistory;
 
-    public Patient(Person p) {
-        encounterhistory = new EncounterHistory(this); // link this patient object back
+    public Patient(Person p, Clinic clinic) {
+        encounterhistory = new EncounterHistory(this, clinic); // link this patient object back
         person = p;
+        this.clinic = clinic;
     }
 
     public EncounterHistory getEncounterHistory() {
@@ -58,4 +63,5 @@ public class Patient {
         }
         return false;
     }
+
 }

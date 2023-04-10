@@ -19,8 +19,8 @@ public class PersonDirectory {
         personlist = new ArrayList<Person>();
     }
 
-    public Person newPerson(String id) {
-        Person p = new Person(id);
+    public Person newPerson(String id, int age) {
+        Person p = new Person(id, age);
         personlist.add(p);
         return p;
     }
