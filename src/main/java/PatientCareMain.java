@@ -1,6 +1,14 @@
 
 import com.github.javafaker.Faker;
 
+import PatientManagement.Catalogs.AgeGroup;
+import PatientManagement.Catalogs.VitalSignLimits;
+import PatientManagement.Catalogs.VitalSignsCatalog;
+import PatientManagement.Clinic.Clinic;
+import PatientManagement.Clinic.PatientDirectory;
+import PatientManagement.Patient.Patient;
+import PatientManagement.Patient.Encounters.Encounter;
+import PatientManagement.Patient.Encounters.VitalSignMetric;
 import PatientManagement.Persona.Person;
 import PatientManagement.Persona.PersonDirectory;
 
@@ -22,26 +30,30 @@ public class PatientCareMain {
      */
     public static void main(String[] args) {
 
-        // PersonDirectory pd = new PersonDirectory();
-        // Person p = pd.newPerson("ssn"); // the focus or root of the family
-        // Person mom = pd.newPerson("ssn2");
-        // Person dad = pd.newPerson("ssn3");
-        // Person sis = pd.newPerson("ssn4");
-        // Person bro = pd.newPerson("ssn5");
+        Clinic clinic = new Clinic("Northeastern Hospitals");
 
-        // link a persons into a family
+        // Configuring vital signs catalog
+        VitalSignsCatalog vsc = clinic.getVitalSignsCatalog();
 
-        // p.setFather(dad);
-        // p.setMother(mom);
-        // p.addSibling(sis);
-        // p.addSibling(bro);
-        // Person momsfather = pd.newPerson("ssn6");
-        // mom.setFather(momsfather);
-        // Person momsmom = pd.newPerson("SSN7)");
-        // mom.setMother(momsmom);
+        AgeGroup adults_21_50 = vsc.newAgeGroup("Adults 21-50", 50, 21);
+        VitalSignLimits heartRateLimits = vsc.newVitalSignLimits("HR");
+        VitalSignLimits bloodPressureLimits = vsc.newVitalSignLimits("BP");
+        heartRateLimits.addLimits(adults_21_50, 105, 55);
+        bloodPressureLimits.addLimits(adults_21_50, 140, 70);
 
-        // Clinic clinic = new Clinic("");
-        // ...
+        // Adding a person
+        PersonDirectory pd = clinic.getPersonDirectory();
+        Person archilPerson = pd.newPerson("archil", 49);
+
+        // Creating a patient
+        PatientDirectory patientDirectory = clinic.getPatientDirectory();
+        Patient archil = patientDirectory.newPatient(archilPerson);
+
+        Encounter archilsVisitToDoctor = archil.newEncounter("Seasonal Flu", null);
+        archilsVisitToDoctor.addNewVitals("HR", 90);
+        archilsVisitToDoctor.addNewVitals("BP", 100);
+
+        System.out.println("Does the patient feel well? " + archilsVisitToDoctor.areVitalsNormal());
 
     }
 

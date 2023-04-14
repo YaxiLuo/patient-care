@@ -15,25 +15,27 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class EncounterHistory {
-    Clinic clinic;
     ArrayList<Encounter> encounters;
     Patient patient;
 
-    public EncounterHistory(Patient p, Clinic c) {
+    public EncounterHistory(Patient p) {
         patient = p;
-        clinic = c;
+        encounters = new ArrayList<Encounter>();
     }
 
     // each encounter must link to the event at the site
-    public Encounter newEncounter(Patient p, String chiefcomplaint, Event ev) {
-        Encounter e = new Encounter(p, chiefcomplaint, ev, clinic);
+    public Encounter newEncounter(String chiefcomplaint, Event ev) {
+        Encounter e = new Encounter(patient, chiefcomplaint, ev, this);
         encounters.add(e);
-        patient = p;
         return e;
     }
 
     public ArrayList<Encounter> getEncounterList() {
         return encounters;
+    }
+
+    public Patient getPatient() {
+        return patient;
     }
 
 }

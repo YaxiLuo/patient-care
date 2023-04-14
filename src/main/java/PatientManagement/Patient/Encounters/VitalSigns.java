@@ -19,14 +19,15 @@ public class VitalSigns {
     Encounter encounter;
     ArrayList<VitalSignMetric> vitalSigns;
 
-    public VitalSigns(Patient p, Encounter e) {
-        patient = p;
+    public VitalSigns(Encounter e) {
         encounter = e;
         vitalSigns = new ArrayList<VitalSignMetric>();
     }
 
     public VitalSignMetric addNewVitals(String name, int value) {
-        Limits limits = encounter.getVitalSignLimits(value, name);
+        Patient patient = encounter.getEncounterHistory().getPatient();
+        int age = patient.getPerson().getAge();
+        Limits limits = encounter.getVitalSignLimits(age, name);
         if (limits == null)
             return null;
         VitalSignMetric newVitals = new VitalSignMetric(patient, name, limits, value);

@@ -50,4 +50,11 @@ public class Clinic {
         return vitalSignsCatalog;
     }
 
+    public PersonDirectory getPersonDirectory() {
+        return persondirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientdirectory;
+    }
 }

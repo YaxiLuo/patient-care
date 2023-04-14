@@ -7,6 +7,8 @@ package PatientManagement.Clinic;
 
 import PatientManagement.Catalogs.VitalSignsCatalog;
 import PatientManagement.Patient.Patient;
+import PatientManagement.Persona.Person;
+
 import java.util.ArrayList;
 
 /**
@@ -31,7 +33,6 @@ public class PatientDirectory {
             }
         }
         return sum;
-
     }
 
     public ArrayList<Patient> getAllConfirmedPositives() {
@@ -42,6 +43,12 @@ public class PatientDirectory {
             }
         }
         return temp; // has the list of encounters with confirmed diagnosis
+    }
+
+    public Patient newPatient(Person person) {
+        Patient patient = new Patient(person, clinic);
+        patients.add(patient);
+        return patient;
     }
 
 }

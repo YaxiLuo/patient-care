@@ -20,21 +20,21 @@ import PatientManagement.Patient.Patient;
 // vacorder.newVaccination();
 
 public class Encounter {
-    Clinic clinic;
     Patient patient;
     String chiefComplaint;
     Diagnosis diagnosis;
     Event event;
     VitalSigns vitalSigns;
+    EncounterHistory encounterHistory;
     // vital signs
     // orders: assessmentorders, ....
 
-    public Encounter(Patient p, String cc, Event ev, Clinic c) { // event is the date when the check was made
+    public Encounter(Patient p, String cc, Event ev, EncounterHistory eh) { // event is the date when the check was made
         chiefComplaint = cc;
         event = ev;
         patient = p;
-        clinic = c;
-        vitalSigns = new VitalSigns(patient, this);
+        encounterHistory = eh;
+        vitalSigns = new VitalSigns(this);
     }
 
     public void newDiagnosis(String diseasetype, boolean confirmed) {
@@ -46,11 +46,20 @@ public class Encounter {
     }
 
     public Limits getVitalSignLimits(int age, String name) {
+        Clinic clinic = encounterHistory.getPatient().getClinic();
         VitalSignsCatalog vsc = clinic.getVitalSignsCatalog();
         return vsc.findVitalSignLimits(age, name);
     }
 
     public VitalSignMetric addNewVitals(String name, int value) {
         return vitalSigns.addNewVitals(name, value);
+    }
+
+    public EncounterHistory getEncounterHistory() {
+        return encounterHistory;
+    }
+
+    public boolean areVitalsNormal() {
+        return vitalSigns.areNormal();
     }
 }

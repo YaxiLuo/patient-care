@@ -8,6 +8,7 @@ package PatientManagement.Patient;
 import PatientManagement.Catalogs.Limits;
 import PatientManagement.Catalogs.VitalSignsCatalog;
 import PatientManagement.Clinic.Clinic;
+import PatientManagement.Clinic.Event;
 import PatientManagement.Clinic.PatientDirectory;
 import PatientManagement.Patient.ClinicalHistory.AlergyHistory;
 import PatientManagement.Patient.ClinicalHistory.VaccinationHistory;
@@ -29,7 +30,7 @@ public class Patient {
     AlergyHistory alergyhistory;
 
     public Patient(Person p, Clinic clinic) {
-        encounterhistory = new EncounterHistory(this, clinic); // link this patient object back
+        encounterhistory = new EncounterHistory(this); // link this patient object back
         person = p;
         this.clinic = clinic;
     }
@@ -62,6 +63,18 @@ public class Patient {
 
         }
         return false;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public Encounter newEncounter(String chiefcomplaint, Event ev) {
+        return encounterhistory.newEncounter(chiefcomplaint, ev);
+    }
+
+    public Clinic getClinic() {
+        return clinic;
     }
 
 }
