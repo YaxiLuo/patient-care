@@ -24,4 +24,10 @@ public class LocationList {
         return l;
     }
 
+    public Location newLocation(String name) {
+        Location newLoc = new Location(name);
+        locations.add(newLoc);
+        return newLoc;
+    }
+
 }

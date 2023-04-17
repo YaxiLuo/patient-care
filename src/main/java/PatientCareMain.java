@@ -5,7 +5,13 @@ import PatientManagement.Catalogs.AgeGroup;
 import PatientManagement.Catalogs.VitalSignLimits;
 import PatientManagement.Catalogs.VitalSignsCatalog;
 import PatientManagement.Clinic.Clinic;
+import PatientManagement.Clinic.Event;
+import PatientManagement.Clinic.EventSchedule;
+import PatientManagement.Clinic.Location;
+import PatientManagement.Clinic.LocationList;
 import PatientManagement.Clinic.PatientDirectory;
+import PatientManagement.Clinic.Site;
+import PatientManagement.Clinic.SiteCatalog;
 import PatientManagement.Patient.Patient;
 import PatientManagement.Patient.Encounters.Encounter;
 import PatientManagement.Patient.Encounters.VitalSignMetric;
@@ -49,11 +55,40 @@ public class PatientCareMain {
         PatientDirectory patientDirectory = clinic.getPatientDirectory();
         Patient archil = patientDirectory.newPatient(archilPerson);
 
-        Encounter archilsVisitToDoctor = archil.newEncounter("Seasonal Flu", null);
+        // Create a location - Greater Boston Area, MA
+
+        LocationList locationsInMA = clinic.getLocationList();
+        Location greaterBostonArea = locationsInMA.newLocation("Greater Boston Area");
+
+        SiteCatalog siteCatalog = clinic.getSiteCatalog();
+        Site nuCurryCenter = siteCatalog.newSite(greaterBostonArea);
+        Site nuHealthServices = siteCatalog.newSite(greaterBostonArea);
+
+        EventSchedule eventSchedule = new EventSchedule();
+
+        Event patriotsWeekendPatientScreening = eventSchedule.newEvent(nuHealthServices, "0");
+
+        Encounter archilsVisitToDoctor = archil.newEncounter("Seasonal Flu", patriotsWeekendPatientScreening);
         archilsVisitToDoctor.addNewVitals("HR", 90);
         archilsVisitToDoctor.addNewVitals("BP", 100);
 
-        System.out.println("Does the patient feel well? " + archilsVisitToDoctor.areVitalsNormal());
+        // System.out.println("Does the patient feel well? " +
+        // archilsVisitToDoctor.areVitalsNormal());
+
+        // Java Faker Sandbox
+
+        Faker magicBox = new Faker();
+
+        for (int i = 0; i < 20; i++) {
+            // String randomBloodGroup = magicBox.name().bloodGroup();
+            // System.out.println(randomBloodGroup);
+
+            String randomAddress = magicBox.address().fullAddress();
+            System.out.println(randomAddress);
+
+            // String randomAnimal = magicBox.animal().name();
+            // System.out.println(randomAnimal);
+        }
 
     }
 

@@ -10,10 +10,10 @@ package PatientManagement.Clinic;
  * @author kal bugrara
  */
 public class Location {
-    String gps;
+    String name;
 
-    public Location(String g) {
-        gps = g;
+    public Location(String name) {
+        this.name = name;
     }
 
 }

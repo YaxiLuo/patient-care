@@ -26,6 +26,7 @@ public class Clinic {
     public Clinic(String n) {
         eventschedule = new EventSchedule();
         sitelist = new SiteCatalog();
+        locationlist = new LocationList();
         persondirectory = new PersonDirectory();
         patientdirectory = new PatientDirectory(this);
         vitalSignsCatalog = new VitalSignsCatalog();
