@@ -35,18 +35,15 @@ public class Event {
     public int getConfirmedTotals() { // total numer of positive cases in event at the site
         int sum = 0;
         for (Encounter e : encounters) { // check all encounter at the event for confirmed cases
-
             if (e.getDiagnosis().isConfirmed()) {
                 sum = sum + 1;
-
             }
         }
 
         return sum;
     }
 
-    public ArrayList<Encounter> getConfirmedEncounters() { // return the actual confirmed encounters to you can extract
-                                                           // the patient objects
+    public ArrayList<Encounter> getConfirmedEncounters() { // return the actual confirmed encounters to you can extract                                                          // the patient objects
         ArrayList<Encounter> temp = new ArrayList<Encounter>();
         for (Encounter e : encounters) { // check all encounter at the event for confirmed cases
 

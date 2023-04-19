@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class AlergyHistory {
-    ArrayList<Alergy> alergies;
+    ArrayList<Alergy> alergysHisroty;
 
     public AlergyHistory() {
-        alergies = new ArrayList<Alergy>();
+        alergysHisroty = new ArrayList<Alergy>();
     }
 }
