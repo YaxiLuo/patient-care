@@ -18,13 +18,13 @@ public class Person {
     String id;
     Person mother;
     Person father;
-    ArrayList<Person> siblings;
+    ArrayList<Person> friends;
     Patient patient;
     int age;
 
     public Person(String id, int a) {
         this.id = id;
-        siblings = new ArrayList<Person>();
+        friends = new ArrayList<Person>();
         age = a;
     }
 
@@ -40,10 +40,10 @@ public class Person {
         mother = m;
     }
 
-    public void addSibling(Person s) {
-        if (siblings.contains(s))
-            return; // sibling already in the arraylist
-        siblings.add(s);
+    public void addFriends(Person s) {
+        if (friends.contains(s))
+            return; // friends already in the arraylist
+        friends.add(s);
     }
 
     public boolean isMatch(String id) {

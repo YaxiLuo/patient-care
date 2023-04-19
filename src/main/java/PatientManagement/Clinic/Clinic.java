@@ -42,7 +42,6 @@ public class Clinic {
     }
 
     public Site newSite(Location location) {
-
         Site s = sitelist.newSite(location);
         return s;
     }

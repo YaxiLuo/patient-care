@@ -21,7 +21,7 @@ import PatientManagement.Patient.Patient;
 
 public class Encounter {
     Patient patient;
-    String chiefComplaint;
+    String chiefComplaint; //""
     Diagnosis diagnosis;
     Event event;
     VitalSigns vitalSigns;

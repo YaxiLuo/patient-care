@@ -35,10 +35,10 @@ public class PatientCareMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        // configure a clinic
         Clinic clinic = new Clinic("Northeastern Hospitals");
 
-        // Configuring vital signs catalog
+        // Configuring vital signs catalog !we need a function
         VitalSignsCatalog vsc = clinic.getVitalSignsCatalog();
 
         AgeGroup adults_21_50 = vsc.newAgeGroup("Adults 21-50", 50, 21);
@@ -47,7 +47,7 @@ public class PatientCareMain {
         heartRateLimits.addLimits(adults_21_50, 105, 55);
         bloodPressureLimits.addLimits(adults_21_50, 140, 70);
 
-        // Adding a person
+        // Adding a person we need function
         PersonDirectory pd = clinic.getPersonDirectory();
         Person archilPerson = pd.newPerson("archil", 49);
 

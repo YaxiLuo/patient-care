@@ -22,5 +22,5 @@ public class Diagnosis {
     public boolean isConfirmed() {
         return confirmed; // just return the boolean
     }
-
+    // if judgement
 }

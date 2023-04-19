@@ -10,7 +10,8 @@ package PatientManagement.Patient.Encounters;
  * @author kal bugrara
  */
 public class Condition {
-    String desease;
+    String disease;
     String Category;
-
+    //coivd19 instance
 }
+
