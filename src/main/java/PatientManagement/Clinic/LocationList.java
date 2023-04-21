@@ -30,4 +30,8 @@ public class LocationList {
         return newLoc;
     }
 
+    public void configureLocation() {
+        
+    }
+
 }
